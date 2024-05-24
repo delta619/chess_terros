@@ -1,0 +1,16 @@
+.cell{
+  height: 50px;
+  width: 50px;
+  border: 1px solid red;
+  display: inline-block;
+}
+
+.row{
+  height: 50px;
+}
+.grid{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
