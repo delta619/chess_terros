@@ -5,8 +5,6 @@ function App() {
   return (
     <div className="App">
 
-    Hello Chess
-
     <br/>
 
     <Board/>

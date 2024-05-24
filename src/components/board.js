@@ -1,5 +1,18 @@
 import React from 'react';
 import './Board.css';
+
+function putPiece(from , to){
+  // from -> 2-4
+  // to -> 4-4
+  
+  
+
+}
+
+function initialiseAllPieces(){
+
+}
+
 const Board = () => {
 
   function renderCell(r, c) {
@@ -24,6 +37,8 @@ const Board = () => {
     }
     return grid;
   }
+
+
 
   return (
     <div className='grid'>

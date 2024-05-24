@@ -1,10 +1,16 @@
 .cell{
   height: 50px;
   width: 50px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: inline-block;
+
+  cursor: pointer;
+
 }
 
+.cell:hover{
+  background-color: cornflowerblue;
+}
 .row{
   height: 50px;
 }
@@ -13,4 +19,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid black;
+  width: 400px;
+}
+
+.grey{
+  background-color: grey;
+}
+
+.white{
+  background-color: white;
 }
