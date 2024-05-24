@@ -1,20 +1,25 @@
-.cell{
+.cell {
   height: 50px;
   width: 50px;
-  /* border: 1px solid red; */
-  display: inline-block;
 
   cursor: pointer;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
-.cell:hover{
+.cell:hover {
   background-color: cornflowerblue;
 }
-.row{
+
+.row {
   height: 50px;
+  display: flex;
 }
-.grid{
+
+.grid {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,10 +28,14 @@
   width: 400px;
 }
 
-.grey{
+.grey {
   background-color: grey;
 }
 
-.white{
+.white {
   background-color: white;
+}
+
+.cell_selected{
+  background-color: blue !important;
 }
