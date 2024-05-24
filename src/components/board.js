@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Board.css';
-import { getIcon } from './scripts'
-
+import { getIcon } from './iconSetup'
+import { isValid } from './constraints'
 function initialiseAllPieces() {
   return [
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
@@ -38,19 +38,20 @@ const Board = () => {
 
   function movePiece(r, c) {
 
-    const { r: sr, c: sc } = selectedPiece;
-    if (r == sr && c == sc) {
-      let fromCell = document.getElementsByClassName('cell')[sr * 8 + sc];
+    const { r: srx, c: scx } = selectedPiece;
+    if (r == srx && c == scx) {
+      let fromCell = document.getElementsByClassName('cell')[srx * 8 + scx];
       fromCell.classList.remove('cell_selected');
       setSelectedPiece(null);
 
       return
     }
-    let fromCell = document.getElementsByClassName('cell')[sr * 8 + sc];
+
+    let fromCell = document.getElementsByClassName('cell')[srx * 8 + scx];
     fromCell.classList.remove('cell_selected');
     const newBoard = board.map(row => [...row]);
-    newBoard[r][c] = newBoard[sr][sc];
-    newBoard[sr][sc] = '';
+    newBoard[r][c] = newBoard[srx][scx];
+    newBoard[srx][scx] = '';
     setBoard(newBoard);
     setSelectedPiece(null);
   }
