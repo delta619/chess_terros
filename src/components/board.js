@@ -39,7 +39,8 @@ const Board = () => {
   function movePiece(r, c) {
 
     const { r: srx, c: scx } = selectedPiece;
-    if (r == srx && c == scx) {
+
+    if (!isValid({ srx, scx }, { r, c }, board, (err)=>{alert(err)})) {
       let fromCell = document.getElementsByClassName('cell')[srx * 8 + scx];
       fromCell.classList.remove('cell_selected');
       setSelectedPiece(null);
