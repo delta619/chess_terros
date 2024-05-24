@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Board.css';
+import { getIcon } from './scripts'
 
 function initialiseAllPieces() {
   return [
@@ -15,6 +16,7 @@ function initialiseAllPieces() {
 }
 
 const Board = () => {
+
 
   const [board, setBoard] = useState(initialiseAllPieces());
   const [selectedPiece, setSelectedPiece] = useState(null);
@@ -56,7 +58,7 @@ const Board = () => {
   function renderCell(r, c) {
     return (
       <div key={`${r}-${c}`} className={"cell " + ((r + c) % 2 ? "white" : "grey")} onClick={() => handleClick(r, c)}>
-        {board[r][c]}
+        {getIcon(board[r][c])}
       </div>
     );
   }
