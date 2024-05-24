@@ -3,14 +3,14 @@ import './Board.css';
 
 function initialiseAllPieces() {
   return [
-    ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'], 
-    ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'], 
-    Array(8).fill(''), 
+    ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
+    ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+    Array(8).fill(''),
     Array(8).fill(''),
     Array(8).fill(''),
     Array(8).fill(''),
     ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-    ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'] 
+    ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
   ];
 }
 
@@ -24,10 +24,10 @@ const Board = () => {
     if (selectedPiece === null) {
       setSelectedPiece({ r, c });
       fromCell.classList.add('cell_selected');
-      
-      
-      
-      
+
+
+
+
     } else {
       movePiece(r, c);
 
@@ -35,11 +35,17 @@ const Board = () => {
   }
 
   function movePiece(r, c) {
-    
+
     const { r: sr, c: sc } = selectedPiece;
+    if (r == sr && c == sc) {
+      let fromCell = document.getElementsByClassName('cell')[sr * 8 + sc];
+      fromCell.classList.remove('cell_selected');
+      setSelectedPiece(null);
+
+      return
+    }
     let fromCell = document.getElementsByClassName('cell')[sr * 8 + sc];
     fromCell.classList.remove('cell_selected');
-
     const newBoard = board.map(row => [...row]);
     newBoard[r][c] = newBoard[sr][sc];
     newBoard[sr][sc] = '';
