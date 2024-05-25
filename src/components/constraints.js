@@ -181,7 +181,7 @@ function isChecked(turn, board) {
     return opponent_moves.some(subArray => subArray[0] === king_pos[0] && subArray[1] === king_pos[1]);
 }
 
-// to see if there is no available move to release the king
+// to see if the game is checkmated
 function isCheckmated(turn, board) {
     let king = turn ? 'K' : 'k';
     let king_pos = [];
@@ -194,17 +194,17 @@ function isCheckmated(turn, board) {
         }
     }
 
-    let opponent_moves = [];
-    for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-            if (isOpponent(board[i][j], turn)) {
-                let moves = getAllValidMoves(board[i][j], i, j, board, !turn);
-                opponent_moves = opponent_moves.concat(moves);
-            }
+    let king_moves = getAllValidMoves(king, king_pos[0], king_pos[1], board, turn);
+    let future_board = board.map(row => [...row]);
+
+    for (let i = 0; i < king_moves.length; i++) {
+        let [x, y] = king_moves[i];
+        future_board[x][y] = future_board[king_pos[0]][king_pos[1]];
+        future_board[king_pos[0]][king_pos[1]] = '';
+        if (!isChecked(turn, future_board)) {
+            return false
         }
     }
-    if (!opponent_moves.some(subArray => subArray[0] === king_pos[0] && subArray[1] === king_pos[1])) {
-        return true;
-    }
-    return false;
+
+    return true
 }
