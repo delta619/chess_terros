@@ -25,15 +25,9 @@ const Board = () => {
     let fromCell = document.getElementsByClassName('cell')[r * 8 + c];
     if (selectedPiece === null) {
       setSelectedPiece({ r, c });
-      getAllMoves(board[r][c], r, c);
       fromCell.classList.add('cell_selected');
-
-
-
-
     } else {
       movePiece(r, c);
-
     }
   }
 

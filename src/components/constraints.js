@@ -30,6 +30,7 @@ export function getAllMoves(from_piece, x, y) {
 export function isValid(f, t, board, cb) {
 
 
+    return true  /////// FOR NOW
 
     let from_piece = board[f.srx][f.scx];
     let dest_piece = board[t.r][t.c];
