@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Board.css';
 import { getIcon } from './iconSetup'
-import { isValid } from './constraints'
+import { isValid, getAllMoves } from './constraints'
 function initialiseAllPieces() {
   return [
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
@@ -25,6 +25,7 @@ const Board = () => {
     let fromCell = document.getElementsByClassName('cell')[r * 8 + c];
     if (selectedPiece === null) {
       setSelectedPiece({ r, c });
+      getAllMoves(board[r][c], r, c);
       fromCell.classList.add('cell_selected');
 
 
@@ -40,7 +41,7 @@ const Board = () => {
 
     const { r: srx, c: scx } = selectedPiece;
 
-    if (!isValid({ srx, scx }, { r, c }, board, (err)=>{alert(err)})) {
+    if (!isValid({ srx, scx }, { r, c }, board, (err) => { alert(err) })) {
       let fromCell = document.getElementsByClassName('cell')[srx * 8 + scx];
       fromCell.classList.remove('cell_selected');
       setSelectedPiece(null);
