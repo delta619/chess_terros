@@ -37,5 +37,23 @@
 }
 
 .cell_selected{
-  background-color: blue !important;
+  background-color: lightblue !important;
+}
+.cell_valid {
+  background-color: lightgreen !important;
+  box-shadow: inset 5px 5px 10px rgba(1, 0, 0, 0.1); /* Adjust the values as needed */
+}
+
+
+.buzz {
+  animation: buzz 0.1s ease-out infinite; /* Adjust animation properties as needed */
+}
+
+@keyframes buzz {
+  0% { transform: translate(0px, 0px); }
+  20% { transform: translate(2px, 0px); }
+  40% { transform: translate(-2px, 0px); }
+  60% { transform: translate(0px, 2px); }
+  80% { transform: translate(0px, -2px); }
+  100% { transform: translate(0px, 0px); }
 }
